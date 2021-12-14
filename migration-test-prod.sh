@@ -12,17 +12,17 @@
  echo
  
  echo "Creating DB backup Spawn data container from image '$SPAWN_DB_IMAGE_NAME'..."
- pagilaContainerName=$(spawnctl create data-container --image $SPAWN_DB_IMAGE_NAME --lifetime 10m --accessToken $SPAWNCTL_ACCESS_TOKEN -q)
+ dbContainerName=$(spawnctl create data-container --image $SPAWN_DB_IMAGE_NAME --lifetime 10m --accessToken $SPAWNCTL_ACCESS_TOKEN -q)
 
  databaseName="pagila"
  
- pagilaJson=$(spawnctl get data-container $pagilaContainerName -o json)
- pagilaHost=$(echo $pagilaJson | jq -r '.host')
- pagilaPort=$(echo $pagilaJson | jq -r '.port')
- pagilaUser=$(echo $pagilaJson | jq -r '.user')
- pagilaPassword=$(echo $pagilaJson | jq -r '.password')
+ dbOutputJson=$(spawnctl get data-container $dbContainerName -o json)
+ pagilaHost=$(echo $dbOutputJson | jq -r '.host')
+ pagilaPort=$(echo $dbOutputJson | jq -r '.port')
+ pagilaUser=$(echo $dbOutputJson | jq -r '.user')
+ pagilaPassword=$(echo $dbOutputJson | jq -r '.password')
 
- echo "Successfully created Spawn data container '$pagilaContainerName'"
+ echo "Successfully created Spawn data container '$dbContainerName'"
  echo
 
  docker pull flyway/flyway > /dev/null 2>&1
@@ -35,6 +35,6 @@
  echo "Successfully migrated 'Pagila' database"
  echo
 
- spawnctl delete data-container $pagilaContainerName --accessToken $SPAWNCTL_ACCESS_TOKEN -q
+ spawnctl delete data-container $dbContainerName --accessToken $SPAWNCTL_ACCESS_TOKEN -q
 
- echo "Successfully cleaned up the Spawn data container '$pagilaContainerName'"
+ echo "Successfully cleaned up the Spawn data container '$dbContainerName'"
