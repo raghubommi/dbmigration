@@ -1,4 +1,4 @@
-name: Database migration test
+name: PostgreSQL Migration Test with Flyway 
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   run_migration_test:
-    name: Run Flyway migration tests
+    name: Migration tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
