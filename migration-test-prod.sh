@@ -7,7 +7,7 @@
  export PATH=$HOME/.spawnctl/bin:$PATH
  echo "spawnctl successfully installed"
 
- export SPAWN_PAGILA_IMAGE_NAME=Pagila:prod
+ export SPAWN_PAGILA_IMAGE_NAME=postgres-pagila:prod
 
  echo
  echo "Creating Pagila backup Spawn data container from image '$SPAWN_PAGILA_IMAGE_NAME'..."
