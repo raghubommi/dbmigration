@@ -14,7 +14,7 @@
  echo "Creating DB backup Spawn data container from image '$SPAWN_DB_IMAGE_NAME'..."
  pagilaContainerName=$(spawnctl create data-container --image $SPAWN_DB_IMAGE_NAME --lifetime 10m --accessToken $SPAWNCTL_ACCESS_TOKEN -q)
 
- databaseName="roytaldb"
+ databaseName="pagila"
  
  pagilaJson=$(spawnctl get data-container $pagilaContainerName -o json)
  pagilaHost=$(echo $pagilaJson | jq -r '.host')
