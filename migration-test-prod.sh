@@ -26,7 +26,7 @@
  echo "Successfully created Spawn data container '$pagilaContainerName'"
  echo
 
- docker pull postgres:12-alpine > /dev/null 2>&1
+ #docker pull postgres:12-alpine > /dev/null 2>&1
  docker pull flyway/flyway > /dev/null 2>&1
  echo $PWD/sql:/flyway/sql
  echo
