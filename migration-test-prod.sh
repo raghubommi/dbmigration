@@ -7,9 +7,10 @@
  export PATH=$HOME/.spawnctl/bin:$PATH
  echo "spawnctl successfully installed"
 
- export SPAWN_PAGILA_IMAGE_NAME=postgres-empty
+ export SPAWN_PAGILA_IMAGE_NAME=postgres-pagila
 
  echo
+ echo "first 10 steps"
  echo "Creating Pagila backup Spawn data container from image '$SPAWN_PAGILA_IMAGE_NAME'..."
  pagilaContainerName=$(spawnctl create data-container --image $SPAWN_PAGILA_IMAGE_NAME --lifetime 10m --accessToken $SPAWNCTL_ACCESS_TOKEN -q)
 
@@ -20,12 +21,14 @@
  pagilaUser=$(echo $pagilaJson | jq -r '.user')
  pagilaPassword=$(echo $pagilaJson | jq -r '.password')
 
+ echo "20 steps"
+ 
  echo "Successfully created Spawn data container '$pagilaContainerName'"
  echo
 
  docker pull postgres:12-alpine > /dev/null 2>&1
  docker pull flyway/flyway > /dev/null 2>&1
-
+ echo "30 steps"
  echo
  echo "Starting migration of database with flyway"
 
