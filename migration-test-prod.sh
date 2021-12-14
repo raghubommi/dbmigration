@@ -28,7 +28,7 @@
 
  docker pull postgres:12-alpine > /dev/null 2>&1
  docker pull flyway/flyway > /dev/null 2>&1
- echo "30 steps"
+ echo $PWD
  echo
  echo "Starting migration of database with flyway"
 
