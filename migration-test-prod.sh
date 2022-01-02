@@ -35,6 +35,6 @@
  echo "Successfully migrated 'Pagila' database"
  echo
 
- spawnctl delete data-container $dbContainerName --accessToken $SPAWNCTL_ACCESS_TOKEN -q
+ #spawnctl delete data-container $dbContainerName --accessToken $SPAWNCTL_ACCESS_TOKEN -q
 
- echo "Successfully cleaned up the Spawn data container '$dbContainerName'"
+ #echo "Successfully cleaned up the Spawn data container '$dbContainerName'"
