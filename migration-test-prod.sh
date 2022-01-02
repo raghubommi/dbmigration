@@ -38,3 +38,8 @@
  #spawnctl delete data-container $dbContainerName --accessToken $SPAWNCTL_ACCESS_TOKEN -q
 
  #echo "Successfully cleaned up the Spawn data container '$dbContainerName'"
+
+ docker run --net=host flyway/flyway -ignorePendingMigrations="true" validate -url="jdbc:postgresql://$pagilaHost:$pagilaPort/$databaseName" -user=$pagilaUser -password=$pagilaPassword
+
+ echo "Successfully Validated 'Pagila' database"
+ echo
