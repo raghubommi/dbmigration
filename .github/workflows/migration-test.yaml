@@ -20,4 +20,5 @@ jobs:
         run: ./migration-test-prod.sh
         env:
           SPAWNCTL_ACCESS_TOKEN: ${{ secrets.SPAWNCTL_ACCESS_TOKEN }}
-       
+      - name: Validate Database 
+        run: ./validate-db-prod.sh       
