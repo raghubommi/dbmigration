@@ -39,7 +39,7 @@
 
  #echo "Successfully cleaned up the Spawn data container '$dbContainerName'"
 
- docker run --net=host flyway/flyway -ignorePendingMigrations="true" validate -url="jdbc:postgresql://$pagilaHost:$pagilaPort/$databaseName" -user=$pagilaUser -password=$pagilaPassword
+ #docker run --net=host flyway/flyway -ignorePendingMigrations="true" validate -url="jdbc:postgresql://$pagilaHost:$pagilaPort/$databaseName" -user=$pagilaUser -password=$pagilaPassword
 
- echo "Successfully Validated 'Pagila' database"
- echo
+ #echo "Successfully Validated 'Pagila' database"
+ #echo
