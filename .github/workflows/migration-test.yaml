@@ -11,12 +11,14 @@ on:
 jobs:
   run_migration_test:
     name: Migration tests
-    runs-on: [self-hosted, linux, x64]
-    # [self-hosted, ubuntu-latest, x64]
+    runs-on: ubuntu-latest
+    # [self-hosted, ubuntu-latest, x64] - this is for self hosted container
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run database migrations against prod backup
+      - name: Migrate Database 
         run: ./migration-test-prod.sh
         env:
           SPAWNCTL_ACCESS_TOKEN: ${{ secrets.SPAWNCTL_ACCESS_TOKEN }}
+      - name: Test Database
+      
