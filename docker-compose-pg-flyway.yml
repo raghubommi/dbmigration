@@ -2,10 +2,10 @@ version: '3'
 services:
   migrate:
     image: flyway/flyway
-    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    command: -configFiles=/flyway/conf/docker-flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     volumes:
       - ${PWD}/sql:/flyway/sql
-      - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
+      - ${PWD}/docker-flyway.config:/flyway/conf/docker-flyway.config
     depends_on:
       - postgres
  
