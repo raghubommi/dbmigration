@@ -1,0 +1,29 @@
+version: '3'
+services:
+  migrate:
+    image: flyway/flyway
+    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    volumes:
+      - ${PWD}/sql:/flyway/sql
+      - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - postgres
+ 
+  validate:
+    image: flyway/flyway
+    command: -configFiles=/flyway/conf/flyway.config -connectRetries=60 validate
+    volumes:
+      - ${PWD}/sql:/flyway/sql
+      - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - postgres
+      
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_USER=portaldbdevops
+    - POSTGRES_PASSWORD=myportalsecret
+    - POSTGRES_DB=portdb
