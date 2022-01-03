@@ -24,6 +24,6 @@ services:
     ports:
     - "5432:5432"
     environment:
-    - POSTGRES_USER=portaldbdevops
+    - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=myportalsecret
     - POSTGRES_DB=portdb
