@@ -3,7 +3,7 @@ services:
  
   validate:
     image: flyway/flyway
-    command: sh -c "-configFiles=/flyway/conf/flyway.config -connectRetries=60 info"
+    command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret migrate
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
