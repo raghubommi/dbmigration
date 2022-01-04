@@ -7,4 +7,3 @@ CREATE TABLE accounts (
         last_login TIMESTAMP 
 );
 
-select "1";
