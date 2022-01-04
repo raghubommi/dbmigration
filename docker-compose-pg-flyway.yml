@@ -3,7 +3,7 @@ services:
  
   validate:
     image: flyway/flyway
-    command: -configFiles=/flyway/conf/flyway.config -connectRetries=60 -ignorePendingMigrations=true validate 
+    command: -configFiles=/flyway/conf/flyway.config -connectRetries=60 info 
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
