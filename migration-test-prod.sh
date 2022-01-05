@@ -6,6 +6,8 @@
 
 docker pull flyway/flyway > /dev/null 2>&1
 
+docker pull postgres > /dev/null 2>&1
+
 docker network create foo
 docker run -d --rm --name=postgres --network=foo postgres:latest
 docker run -d --rm --name=flyway --network=foo flyway/flyway
