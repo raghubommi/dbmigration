@@ -15,9 +15,27 @@ services:
       timeout: 5s
       retries: 5
 
-  validate:
+  migrate:
     image: flyway/flyway
     command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret migrate
+    volumes:
+      - ${PWD}/sql:/flyway/sql
+      - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - migrate
+
+  migration_info:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret info
+    volumes:
+      - ${PWD}/sql:/flyway/sql
+      - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - migrate
+      
+  validate:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret validate
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
