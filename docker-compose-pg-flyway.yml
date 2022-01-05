@@ -17,7 +17,7 @@ services:
 
   migrate:
     image: flyway/flyway
-    command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret migrate
+    command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret migrate && info
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
