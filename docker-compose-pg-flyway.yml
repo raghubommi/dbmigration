@@ -22,7 +22,7 @@ services:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
     depends_on:
-      - migrate
+      - postgres
 
   migration_info:
     image: flyway/flyway
@@ -40,4 +40,4 @@ services:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
     depends_on:
-      - postgres
+      - migrate
