@@ -18,6 +18,7 @@ services:
   migrate:
     image: flyway/flyway
     command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret migrate
+    tty: true
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
@@ -27,6 +28,7 @@ services:
   migration_info:
     image: flyway/flyway
     command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret info
+    tty: true 
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
@@ -36,6 +38,7 @@ services:
   validate:
     image: flyway/flyway
     command: -url=jdbc:postgresql://postgres:5432/portdb -schemas=public -user=postgres -password=myportalsecret validate
+    tty: true    
     volumes:
       - ${PWD}/sql:/flyway/sql
       - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
