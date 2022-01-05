@@ -4,9 +4,11 @@
 
 #docker-compose -f docker-compose-pg-flyway.yml up 
 
+docker pull flyway/flyway > /dev/null 2>&1
+
 docker network create foo
-docker run -d --rm --name=postgres --network=foo postgres
-docker run -d --rm --name=flyway --network=foo flyway
+docker run -d --rm --name=postgres --network=foo postgres:latest
+docker run -d --rm --name=flyway --network=foo flyway/flyway
 
 echo "completed running docker"
 
